@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
-
+import { isBrowser } from "../helpers/isBrowser";
 
 const Loginpage = () =>  {
 
@@ -21,8 +21,8 @@ const Loginpage = () =>  {
   const handleSubmit = (event: any) => {
     event.preventDefault();
 
-    if (window.localStorage.getItem('email') === email && window.localStorage.getItem('pass') === pass){
-      window.localStorage.setItem('logged', '1');
+    if (isBrowser() && localStorage.getItem('email') === email && isBrowser() && localStorage.getItem('pass') === pass){
+      isBrowser() && localStorage.setItem('logged', '1');
 
       router.push("/forecast")
     }

@@ -2,7 +2,7 @@ import Header from "../components/Header";
 import Footer from '../components/Footer';
 import Weather from "../components/Weather";
 import { useRouter } from "next/router";
-
+import { isBrowser } from "../helpers/isBrowser";
 
 
 const Home = () => {
@@ -11,11 +11,11 @@ const Home = () => {
 
   const logout = () => {
 
-    window.localStorage.setItem('logged', '0')
+    isBrowser() && localStorage.setItem('logged', '0')
     router.push("/");
   }
 
-  if (window.localStorage.getItem('logged')=='0') {
+  if (isBrowser() && localStorage.getItem('logged')=='0') {
       router.push("/Login")
   }
 
